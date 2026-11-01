@@ -16,7 +16,7 @@ export default function Home() {
       </nav>
 
       <section className="hero">
-        <div className="availability"><span className="availability-dot" /> AVAILABLE FOR PROJECTS</div>
+        <div className="availability"><span className="availability-dot" /> AVAILABLE FOR NOVEMBER PROJECTS</div>
 
         <div className="hero-copy">
           <p className="eyebrow">GOOD DESIGN. GOOD PEOPLE. GOOD WORK.</p>
