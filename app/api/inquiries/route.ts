@@ -1,3 +1,4 @@
+
 import { NextRequest, NextResponse } from "next/server";
 
 export const runtime = "nodejs";
@@ -31,12 +32,16 @@ export async function POST(request: NextRequest) {
 
   if (!endpoint) {
     return NextResponse.json(
-      { success: false, error: "Inquiry storage is not configured yet. Please try again later." },
+      {
+        success: false,
+        error: "Inquiry storage is not configured yet.",
+      },
       { status: 503 }
     );
   }
 
   let body: unknown;
+
   try {
     body = await request.json();
   } catch {
@@ -47,41 +52,86 @@ export async function POST(request: NextRequest) {
   }
 
   const inquiry = validateInquiry(body);
+
   if (!inquiry) {
     return NextResponse.json(
-      { success: false, error: "Please check your name, email, and phone number." },
+      {
+        success: false,
+        error: "Please check your name, email, and phone number.",
+      },
       { status: 400 }
     );
   }
 
   try {
+    const startTime = Date.now();
+
+    // Send inquiry directly to Google Apps Script
     const response = await fetch(endpoint, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify(inquiry),
-      cache: "no-store",
       redirect: "follow",
+      cache: "no-store",
     });
+
+    const responseText = await response.text();
+
+    console.log("Google Apps Script status:", response.status);
+    console.log("Google Apps Script response:", responseText);
+
+    // Wait at least 3 seconds before responding to the frontend
+    const elapsed = Date.now() - startTime;
+
+    if (elapsed < 3000) {
+      await new Promise((resolve) =>
+        setTimeout(resolve, 3000 - elapsed)
+      );
+    }
 
     if (!response.ok) {
       return NextResponse.json(
-        { success: false, error: "We couldn't save your inquiry. Please try again shortly." },
+        {
+          success: false,
+          error: "We couldn't save your inquiry. Please try again shortly.",
+        },
         { status: 502 }
       );
     }
 
-    const result: unknown = await response.json().catch(() => null);
-    if (!result || typeof result !== "object" || (result as { success?: boolean }).success !== true) {
+    let result: unknown;
+
+    try {
+      result = JSON.parse(responseText);
+    } catch {
+      result = null;
+    }
+
+    if (
+      !result ||
+      typeof result !== "object" ||
+      (result as { success?: boolean }).success !== true
+    ) {
       return NextResponse.json(
-        { success: false, error: "We couldn't confirm the save. Please try again shortly." },
+        {
+          success: false,
+          error: "We couldn't confirm the save. Please try again shortly.",
+        },
         { status: 502 }
       );
     }
 
     return NextResponse.json({ success: true });
-  } catch {
+  } catch (error) {
+    console.error("Inquiry submission error:", error);
+
     return NextResponse.json(
-      { success: false, error: "The inquiry service is temporarily unavailable. Please try again." },
+      {
+        success: false,
+        error: "The inquiry service is temporarily unavailable.",
+      },
       { status: 502 }
     );
   }
