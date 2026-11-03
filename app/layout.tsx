@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     "We craft brands, interfaces, and digital experiences that earn loyalty. Not just attention — real, lasting trust with the people who matter most to your business.",
   applicationName: "JADE & CO.",
   icons: {
-    icon: "/logo.png",
+    icon: "/logoic.png",
   },
 };
 
