@@ -41,7 +41,7 @@ h1 span{color:#7c8f6b;font-style:italic;font-weight:400;letter-spacing:-.09em}
 .halo-one{width:420px;height:420px}
 .halo-two{width:325px;height:325px;transform:rotateX(67deg) rotateZ(35deg)}
 .orb-shadow{position:absolute;width:265px;height:70px;background:rgba(45,54,36,.18);filter:blur(26px);border-radius:50%;transform:translateY(153px) rotate(-18deg)}
-.orb{position:relative;width:265px;height:265px;border-radius:50%;background:radial-gradient(circle at 28% 20%,#e2eccf 0%,#b9cd9d 19%,#91a978 42%,#70855b 67%,#3f5236 100%);box-shadow:inset -20px -28px 42px rgba(22,39,17,.35),inset 12px 12px 22px rgba(255,255,255,.55),24px 32px 50px rgba(46,57,37,.16);transform:rotateX(-9deg) rotateY(-20deg);animation:float 3s ease-in-out infinite;z-index:1}
+.orb{position:relative;width:265px;height:265px;border-radius:50%;background:radial-gradient(circle at 28% 20%,#e2eccf 0%,#b9cd9d 19%,#91a978 42%,#70855b 67%,#3f5236 100%);box-shadow:inset -20px -28px 42px rgba(22,39,17,.35),inset 12px 12px 22px rgba(255,255,255,.55),24px 32px 50px rgba(46,57,37,.16);transform:rotateX(-9deg) rotateY(-20deg);animation:float 4s ease-in-out infinite;z-index:1}
 .orb:before{content:"";position:absolute;inset:13px;border-radius:50%;border:1px solid rgba(255,255,255,.25);transform:translate(-3px,-2px)}
 .orb-shine{position:absolute;top:23px;left:48px;width:75px;height:42px;border-radius:50%;background:rgba(255,255,255,.5);filter:blur(17px);transform:rotate(-36deg)}
 .orb-ridge{position:absolute;width:82%;height:82%;left:7%;top:11%;border-radius:50%;border:1px solid rgba(236,245,220,.26);transform:rotate(32deg) scaleX(.58);box-shadow:8px 3px 12px rgba(32,50,25,.1)}
@@ -109,9 +109,81 @@ h1 span{color:#7c8f6b;font-style:italic;font-weight:400;letter-spacing:-.09em}
   margin: 0;
   padding: 0;
 }
-@keyframes float{0%,100%{transform:translateY(0) rotateX(-9deg) rotateY(-20deg)}50%{transform:translateY(-13px) rotateX(-5deg) rotateY(-13deg)}}
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 28px;
+  right: 24px;
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  padding: 15px 22px;
+  border-radius: 50px;
+
+  background: #20c968;
+  color: #ffffff;
+
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+
+  box-shadow: 0 8px 25px rgba(32, 201, 104, 0.25);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.whatsapp-float:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(32, 201, 104, 0.35);
+}
+
+.whatsapp-float svg {
+  flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+  .whatsapp-float {
+    bottom: 20px;
+    right: 16px;
+    padding: 13px 18px;
+    font-size: 14px;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(20px) rotateX(-9deg) rotateY(-20deg);
+  }
+
+  50% {
+    transform: translateY(-15px) rotateX(-5deg) rotateY(-13deg);
+  }
+}
 @keyframes spin{to{transform:rotate(360deg)}}
 @media (min-width:1500px){.hero{min-height:740px}.visual-stage{height:640px}.orb{width:310px;height:310px}.orb-shadow{width:300px;transform:translateY(177px) rotate(-18deg)}}
 @media (max-width:900px){.site-shell{padding:0 4vw}.hero{grid-template-columns:1fr .85fr;min-height:590px}.hero-copy{padding-top:75px}.visual-stage{height:470px}.orb{width:215px;height:215px}.halo-one{width:340px;height:340px}.halo-two{width:270px;height:270px}.card-top{right:0;top:20%}.card-bottom{left:0;bottom:15%}.orbit-label-a{right:0}.inquiry-section{gap:5%;padding:80px 0}.inquiry-form{padding:23px}}
 @media (max-width:640px){.site-shell{padding:0 21px}.topbar{height:72px}.nav-center{display:none}.nav-cta{font-size:8px;padding:10px 11px}.hero{display:flex;flex-direction:column;align-items:stretch;padding-top:0;min-height:auto}.availability{top:27px;font-size:8px}.hero-copy{padding:94px 0 8px}.eyebrow{font-size:8px;margin-bottom:19px}h1{font-size:clamp(54px,15vw,82px);margin-bottom:21px}.intro{font-size:14px;max-width:360px}.hero-footnote{margin-top:34px;gap:16px;font-size:7px}.visual-stage{height:390px;margin:0 -13px 42px}.orb{width:200px;height:200px}.orb-shadow{width:210px;transform:translateY(120px) rotate(-18deg)}.halo-one{width:310px;height:310px}.halo-two{width:245px;height:245px}.card-top{top:14%;right:5%;width:126px;height:64px;padding:12px}.card-bottom{bottom:12%;left:4%;width:145px;min-height:96px;padding:12px}.card-caption{font-size:14px}.orbit-label{font-size:7px}.orbit-label-a{right:1%;top:39%}.orbit-label-b{left:3%;top:24%}.scroll-cue{bottom:17px}.inquiry-section{display:flex;flex-direction:column;gap:35px;padding:70px 0 75px}.section-tag{margin-bottom:30px}.inquiry-intro h2{font-size:clamp(48px,13vw,67px)}.inquiry-description{font-size:13px}.inquiry-note{margin-top:28px;font-size:7px}.inquiry-form{width:100%;padding:22px 18px}.field{padding:17px 0 13px}.footer{min-height:112px;flex-wrap:wrap;padding:22px 0;row-gap:15px}.footer-brand{order:1}.back-top{order:2}.copyright{order:3;width:100%;font-size:7px}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+@media (max-width: 600px) {
+  .whatsapp-float {
+    width: 54px;
+    height: 54px;
+    padding: 0;
+    bottom: 20px;
+    right: 16px;
+    border-radius: 50%;
+    justify-content: center;
+  }
+
+  .whatsapp-text {
+    display: none;
+  }
+
+  .whatsapp-float svg {
+    width: 27px;
+    height: 27px;
+  }
+}
