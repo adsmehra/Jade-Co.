@@ -43,7 +43,7 @@ export default function Home() {
           <div className="orb-shadow" />
           <div className="orb"><div className="orb-shine" /><div className="orb-ridge" /></div>
           <div className="glass-card card-top">
-            <span className="mini-label">JADE / 001</span>
+            <span className="mini-label">CRE8X / 001</span>
             <span className="card-star">✳</span>
           </div>
           <div className="glass-card card-bottom">
