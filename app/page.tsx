@@ -3,12 +3,16 @@ import InquiryForm from "./InquiryForm";
 
 export default function Home() {
   return (
-    <main className="site-shell" id="top">
-      <nav className="topbar" aria-label="Main navigation">
-        <a className="wordmark" href="#top" aria-label="Jade and Co home">
-          <img src="/logo.png" alt="JADE & CO." className="logo-image" />
-          <span>JADE <b>&</b> CO.</span>
-        </a>
+   <main className="site-shell" id="top">
+  <nav className="topbar" aria-label="Main navigation">
+    <a className="wordmark" href="#top" aria-label="CRE8X home">
+      <img src="/logo.png" alt="CRE8X" className="logo-image" />
+
+      <span className="logo-text">
+        <span className="logo-title">CRE8X</span>
+        <span className="logo-subtitle">A UNIT OF UPSCALEX</span>
+      </span>
+    </a>
         <div className="nav-center"><span className="status-dot" /> INDEPENDENT CREATIVE STUDIO</div>
         <a className="nav-cta" href="#inquire">
           INQUIRE <ArrowUpRight size={15} strokeWidth={1.8} />
@@ -67,10 +71,14 @@ export default function Home() {
       </section>
 
       <footer className="footer">
-        <a className="wordmark footer-brand" href="#top">
-          <img src="/logo.png" alt="JADE & CO." className="logo-image" />
-          <span>JADE <b>&</b> CO.</span>
-        </a>
+        <a className="wordmark footer-brand" href="#top" aria-label="CRE8X home">
+      <img src="/logo.png" alt="CRE8X" className="logo-image" />
+
+      <span className="logo-text">
+        <span className="logo-title">CRE8X</span>
+        <span className="logo-subtitle">A UNIT OF UPSCALEX</span>
+      </span>
+    </a>
         <span className="copyright">ALL RIGHTS RESERVED BY JADE & CO. — 2026</span>
         <a className="back-top" href="#top">BACK TO TOP ↑</a>
       </footer>
