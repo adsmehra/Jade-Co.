@@ -56,13 +56,13 @@ input {
 }
 
 .wordmark {
-  display: inline-flex;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 10px;
-  font-family: var(--display);
-  font-weight: 800;
-  font-size: 15px;
-  letter-spacing: -.07em
+  justify-content: center;
+  text-decoration: none;
+  gap: 12px;
+  color: #fff;
 }
 
 .wordmark b {
@@ -254,22 +254,6 @@ h1 span {
   font-size: 8px
 }
 
-.wordmark {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  margin: 0;
-  padding: 0;
-}
-
-.logo-image {
-  display: block;
-  width: 55px;
-  height: 48px;
-  object-fit: contain;
-  margin: 0;
-  padding: 0;
-}
 
 .wordmark span {
   margin: 0;
@@ -1277,6 +1261,47 @@ h1 span {
 
 .whatsapp-float svg {
   flex-shrink: 0;
+}
+
+.wordmark {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.logo-image {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.logo-text {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 5px;
+}
+
+.logo-title {
+  display: block;
+  font-size: 28px;
+  font-weight: 900;
+  line-height: 1;
+  color: #fff;
+}
+
+.logo-subtitle {
+  display: block;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  line-height: 1.2;
+  color: #c4c4c4;
+  white-space: nowrap;
 }
 
 @media (max-width: 600px) {
