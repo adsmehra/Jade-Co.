@@ -97,6 +97,13 @@ input {
   transform: rotate(225deg)
 }
 
+.hero .availability {
+  grid-column: 1 / -1;
+  display: block;
+  width: fit-content;
+  position: relative;
+}
+
 .nav-center,
 .nav-cta,
 .eyebrow,
@@ -125,15 +132,7 @@ input {
   color: #6c7066
 }
 
-.status-dot,
-.availability-dot {
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #819d62;
-  flex: none
-}
+
 
 .nav-cta {
   display: flex;
@@ -161,22 +160,42 @@ input {
 }
 
 .availability {
-  position: absolute;
-  top: 37px;
-  left: 0;
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  color: #64695d;
-  font-size: 9px
+  display: inline-block;
+  position: relative;
+  color: #00ff88 !important;
+  font-weight: 600;
+  letter-spacing: 2px;
+  animation: availabilityBlink 2s ease-in-out infinite;
+  text-shadow: 0 0 5px #00ff88, 0 0 12px #00ff88, 0 0 25px #00ff88;
 }
 
 .availability-dot {
-  width: 7px;
-  height: 7px;
-  box-shadow: 0 0 0 4px rgba(129, 157, 98, .13)
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #00ff88;
+  margin-right: 8px;
+  vertical-align: middle;
+  box-shadow: 0 0 8px #00ff88, 0 0 18px #00ff88;
+  animation: availabilityPulse 2s infinite ease-in-out;
 }
 
+@keyframes availabilityBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.55; }
+}
+
+@keyframes availabilityPulse {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 8px #00ff88, 0 0 18px #00ff88;
+  }
+  50% {
+    opacity: 0.4;
+    box-shadow: 0 0 2px #00ff88;
+  }
+}
 .hero-copy {
   position: relative;
   z-index: 2;
